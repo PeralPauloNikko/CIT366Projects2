@@ -1,7 +1,6 @@
-
 <div class="row">
   <div class="col-md-5">
-    <app-contact-list (contactSend)="selectedContact = $event"></app-contact-list>
+    <app-contacts-list (contactSend)="selectedContact = $event"></app-contacts-list>
   </div>
   <div class="col-md-4">
     <app-contacts-detail *ngIf="selectedContact !=null"

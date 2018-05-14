@@ -1,6 +1,4 @@
-
 <div class="panel panel-default">
-
   <div class="panel-heading clearfix">
     <div class="col-xs-12">
       <span class="pull-left title">Contacts</span>
@@ -11,10 +9,11 @@
   <div class="row">
   <div class="col-xs-12">
   <div class="panel panel-body">
-    <!--<app-contacts-list
+    <app-contact-item
     *ngFor="let contact of contacts"
     [contact]="contact"
-    </app-contacts-list>-->
+    (click)="onSelected(contact)">
+    </app-contact-item>
   </div>
 </div>
 </div>

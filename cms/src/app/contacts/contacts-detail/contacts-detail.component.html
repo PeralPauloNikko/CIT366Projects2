@@ -5,16 +5,17 @@
         {{contact?.name}}
       </p>
       <div class="row">
-        <div class="pull-left">
+        <div class="col-sm-6 pull-left">
           <img src="{{contact?.imageUrl}}"
                alt="{{contact?.name}}"
                class="img-responsive"
-               style="max-height: 100px;
+               style="max-height: 110px;
                    padding-left: 12px"/>
         </div>
-        <div class="pull-right">
-          <button class="btn btn-primary button_edit">Edit</button>
-          <button class="btn btn-danger" button_delete>Delete</button>
+
+        <div class="row col-xs-6">
+          <button class="btn btn-primary pull-right button_edit">Edit</button>
+          <button class="btn btn-danger pull-right button_delete">Delete</button>
         </div>
       </div>
     </div>

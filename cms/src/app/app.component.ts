@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,4 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  selectedFeature: string = 'documents';
+
+/*  onNavigate(feature: string) {
+    this.selectedFeature = feature;
+  }*/
+  switchView(selectedFeature: string){
+  this.selectedFeature = selectedFeature;
+  }
 }

@@ -16,13 +16,15 @@ export class DocumentListComponent implements OnInit {
   @Output() selectedDocumentEvent = new EventEmitter<Document>();
 @Input() documents: Document[] = [
   new Document('A Test Recipe', 'This is simply a test', 'image','imageUrl','none'),
-  new Document('A Test Recipe 2','Nikko','Nikkos Recipe','imageUrl','No children')
+  new Document('A Test Recipe 2','Nikko','Nikkos Recipe','imageUrl','No children'),
+  new Document('A Test Recipe 3','Booyah','Booya Document','www.google.com','2 children'),
+  new Document('A Test Recipe 4','Boyyyyyahhhh','Soooooot','www.neverdie.com','infinity')
 ];
   constructor() {
   }
   ngOnInit() {
   }
-  onSelected(document: Document) {
+  onSelectedDocument(document: Document) {
 this.selectedDocumentEvent.emit(document);
   }
 }

@@ -8,15 +8,11 @@ import {Document} from "../document.model";
 })
 export class DocumentItemComponent implements OnInit {
   @Input() document: Document;
-/*
-  @Output() selectedDocumentEvent = new EventEmitter<void>();
-*/
+
   constructor() {
   }
-  ngOnInit(){
+
+  ngOnInit() {
   }
-/*  onSelected(){
-    this.selectedDocumentEvent.emit();
-  }*/
 }
 

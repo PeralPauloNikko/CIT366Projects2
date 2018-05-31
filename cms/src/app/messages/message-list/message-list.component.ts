@@ -17,6 +17,9 @@ export class MessageListComponent implements OnInit {
   }
   ngOnInit() {
   }
+  onSendMsg(message: Message){
+this.messages.push(message);
+  }
   onSelected(message: Message) {
     this.selectedMessageEvent.emit(message);
   }

@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Document} from "../../documents/document.model";
 import {Message} from "../message.model";
 
 @Component({
@@ -9,9 +8,14 @@ import {Message} from "../message.model";
 })
 export class MessageItemComponent implements OnInit {
   @Input() message: Message;
+  messageSender: string = "";
   constructor() { }
 
   ngOnInit() {
   }
+onSendMessage(){
+}
+onClear(){
 
+}
 }

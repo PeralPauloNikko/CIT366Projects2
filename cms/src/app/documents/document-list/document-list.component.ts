@@ -14,7 +14,7 @@ import {Document} from "../document.model";
 })
 export class DocumentListComponent implements OnInit {
   @Output() selectedDocumentEvent = new EventEmitter<Document>();
-documents: Document[] = [
+@Input() documents: Document[] = [
   new Document('A Test Recipe', 'This is simply a test', 'image','imageUrl','none'),
   new Document('A Test Recipe 2','Nikko','Nikkos Recipe','imageUrl','No children')
 ];

@@ -3,15 +3,14 @@
     <!--it will be emmited from the DocumentListComponent-->
     <!--It will detect the selectedDocumentEvent from the DocumentListComponent and assigned
     the Document object passed up with the event to the selectedDocument class variable-->
-    <app-document-list
-      (selectedDocumentEvent)="selectedDocument = $event"></app-document-list>
+    <app-document-list>
+    </app-document-list>
   </div>
   <div class="col-md-7">
     <!--assigned the value of the selectedDocument variable into the document input variable in DocumentDetailComponent-->
     <app-document-detail
-      [document]="selectedDocument"
-      *ngIf="selectedDocument"
-    ></app-document-detail>
+      [document] = "selectedDocument"
+      *ngIf="selectedDocument"></app-document-detail>
   </div>
 </div>
 

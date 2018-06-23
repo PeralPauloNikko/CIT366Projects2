@@ -8,11 +8,12 @@ import {ContactService} from "../contact.service";
   styleUrls: ['./contact-list.component.css']
 })
 export class ContactListComponent implements OnInit {
- @Output() selectedContactEvent = new EventEmitter<Contact>();
+@Output() selectedContactEvent = new EventEmitter<Contact>();
   //lesson 3 page 6 1a
-  contacts: Contact[] = [];
+  //contacts: Contact[] = [];
+  contacts: Contact[];
   constructor(private contactService: ContactService) {
-    this.contacts = MOCKCONTACTS;
+  //  this.contacts = MOCKCONTACTS;
   }
 
   ngOnInit() {

@@ -5,7 +5,7 @@ export class Document {
   public url: string;
   public children: string;
 
-  constructor(id: string, name: string, description: string, url: string, children: string){
+  constructor(id: string, name: string, description: string, url: string, children: any){
     this.id = id;
     this.name = name;
     this.description = description;

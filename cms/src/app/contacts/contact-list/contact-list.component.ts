@@ -1,26 +1,29 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {Contact} from "../contact.model";
-import {MOCKCONTACTS} from "../MOCKCONTACTS";
-import {ContactService} from "../contact.service";
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {Contact} from '../contact.model';
+import { ContactService} from "../contact.service";
+
+
 @Component({
-  selector: 'app-contacts-list',
+  selector: 'app-contact-list',
   templateUrl: './contact-list.component.html',
   styleUrls: ['./contact-list.component.css']
 })
 export class ContactListComponent implements OnInit {
-@Output() selectedContactEvent = new EventEmitter<Contact>();
-  //lesson 3 page 6 1a
-  //contacts: Contact[] = [];
   contacts: Contact[];
+
   constructor(private contactService: ContactService) {
-  //  this.contacts = MOCKCONTACTS;
+
   }
 
   ngOnInit() {
     this.contacts = this.contactService.getContacts();
+    this.contactService.contactChange.subscribe((contacts: Contact[])  => {
+      this.contacts = contacts;
+    });
   }
-  //emits the selectedContactEvent (which contains the images) and then outputs it//
-  onSelected(contact: Contact) {
+
+  onSelected(contact: Contact){
     this.contactService.contactSelectedEvent.emit(contact);
   }
+
 }

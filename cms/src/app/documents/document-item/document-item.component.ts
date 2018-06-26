@@ -1,5 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {Document} from "../document.model";
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-document-item',
@@ -8,11 +7,10 @@ import {Document} from "../document.model";
 })
 export class DocumentItemComponent implements OnInit {
   @Input() document: Document;
-
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit() {
   }
+
 }
 

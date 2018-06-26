@@ -1,6 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Document} from "../document.model";
+import { Component, OnInit} from '@angular/core';
 import {DocumentsService} from "../documents.service";
+import { Document} from "../document.model";
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import {WindRefService} from "../../wind-ref.service";
 
 @Component({
   selector: 'app-document-detail',
@@ -8,11 +10,30 @@ import {DocumentsService} from "../documents.service";
   styleUrls: ['./document-detail.component.css']
 })
 export class DocumentDetailComponent implements OnInit {
-@Input() document: Document;
-  constructor() {
-
+  document: Document;
+  nativeWindow: any;
+  constructor(private documentsService: DocumentsService,
+              private windowRefService: WindRefService,
+              private route: ActivatedRoute,
+              private router: Router,
+              ) {
+    this.nativeWindow = this.windowRefService.getNativeWindow();
   }
+
   ngOnInit() {
+    // the edit button on the detail html
+    this.route.params.subscribe((params: Params) => {
+      this.document = this.documentsService.getDocument(params['id']);
+    });
   }
-
+  onView() {
+    if (this.document.url) {
+      this.nativeWindow.open(this.document.url);
+    }
+  }
+// the delete button on the detail html
+  onDelete() {
+    this.documentsService.deleteDocument(this.document);
+    this.router.navigate(['/documents']);
+  }
 }

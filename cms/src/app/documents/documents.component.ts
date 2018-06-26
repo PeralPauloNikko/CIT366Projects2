@@ -6,6 +6,7 @@ import {DocumentsService} from "./documents.service";
   selector: 'app-documents',
   templateUrl: './documents.component.html',
   styleUrls: ['./documents.component.css'],
+  providers: [DocumentsService]
 })
 export class DocumentsComponent implements OnInit {
   selectedDocument: Document;
@@ -18,7 +19,9 @@ export class DocumentsComponent implements OnInit {
     )
   }
   ngOnInit(){
-
+  this.documentService.documentSelectedEvent.subscribe((document: Document)=> {
+    this.selectedDocument = document;
+  });
   }
 }
 

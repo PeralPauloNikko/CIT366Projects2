@@ -21,7 +21,16 @@ import {ContactService} from "./contacts/contact.service";
 import {DocumentsService} from "./documents/documents.service";
 import {MessagesService} from "./messages/messages.service";
 import {MessagesComponent} from "./messages/messages.component";
+import {Routes} from "@angular/router";
+import {AppRoutingModule} from "./app-routing";
+import { DocumentViewComponent } from './documents/document-view/document-view.component';
+import { DocumentEditComponent } from './documents/document-edit/document-edit.component';
+import {WindRefService} from "./wind-ref.service";
+import { ContactEditComponent } from './contacts/contact-edit/contact-edit.component';
 
+const app_Routes: Routes = [
+
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,13 +48,17 @@ import {MessagesComponent} from "./messages/messages.component";
     DocumentsComponent,
     DropdownDirective,
     MessagesComponent,
+    DocumentViewComponent,
+    DocumentEditComponent,
+    ContactEditComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AppRoutingModule
   ],
-  providers: [ContactService,DocumentsService, MessagesService],
+  providers: [ContactService,DocumentsService, MessagesService, WindRefService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

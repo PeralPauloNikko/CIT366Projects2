@@ -4,10 +4,9 @@ import {ContactService} from "../contact.service";
 import {ActivatedRoute, Router, Params} from "@angular/router";
 @Component({
   selector: 'app-contact-detail',
-  templateUrl: './contact-detail.component.html',
-  styleUrls: ['./contact-detail.component.css']
+  templateUrl: './contacts-detail.component.html',
+  styleUrls: ['./contacts-detail.component.css']
 })
-
 export class ContactDetailComponent implements OnInit {
   @Input() contact: Contact;
   constructor(private contactsService: ContactService,

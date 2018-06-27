@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import {ContactsComponent} from "./contacts/contacts.component";
 import { ContactEditComponent} from "./contacts/contact-edit/contact-edit.component";
-import { ContactDetailComponent} from "./contacts/contacts-detail/contacts-detail.component";
+import {ContactDetailComponent} from "./contacts/contacts-detail/contacts-detail.component";
 import {DocumentsComponent} from "./documents/documents.component";
 import {MessageListComponent} from "./messages/message-list/message-list.component";
 import {DocumentEditComponent} from "./documents/document-edit/document-edit.component";
@@ -28,3 +28,4 @@ const routes: Routes = [
   imports: [ RouterModule.forRoot(routes)],
   exports: [ RouterModule ]
 })
+export class AppRoutingModule { }

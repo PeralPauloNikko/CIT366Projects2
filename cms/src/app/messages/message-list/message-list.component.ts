@@ -7,10 +7,8 @@ import {MessagesService} from "../messages.service";
   templateUrl: './message-list.component.html',
   styleUrls: ['./message-list.component.css']
 })
-
 export class MessageListComponent implements OnInit {
-
-  messages: Message[] = [];
+  messages: Message[];
 
   constructor(private messagesService: MessagesService) {
     this.messages = this.messagesService.getMessages();
@@ -24,5 +22,4 @@ export class MessageListComponent implements OnInit {
   onAddMessage(message: Message){
     this.messages.push(message);
   }
-
 }

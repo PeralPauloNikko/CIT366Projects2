@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {Contact} from '../contact.model';
 import { ContactService} from "../contact.service";
+import {Subscription} from "rxjs/Subscription";
 
 
 @Component({

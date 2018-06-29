@@ -2,7 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import {DocumentsService} from "../documents.service";
 import { Document} from "../document.model";
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import {WindRefService} from "../../wind-ref.service";
+import { WindRefService} from "../../wind-ref.service";
 
 @Component({
   selector: 'app-document-detail',
@@ -13,11 +13,11 @@ export class DocumentDetailComponent implements OnInit {
   document: Document;
   nativeWindow: any;
   constructor(private documentsService: DocumentsService,
-              private windowRefService: WindRefService,
               private route: ActivatedRoute,
               private router: Router,
-              ) {
-    this.nativeWindow = this.windowRefService.getNativeWindow();
+              private winRefService: WindRefService) {
+    this.nativeWindow = this.winRefService.getNativeWindow();
+
   }
 
   ngOnInit() {
@@ -26,6 +26,7 @@ export class DocumentDetailComponent implements OnInit {
       this.document = this.documentsService.getDocument(params['id']);
     });
   }
+// the view button on the detail html
   onView() {
     if (this.document.url) {
       this.nativeWindow.open(this.document.url);
@@ -36,4 +37,6 @@ export class DocumentDetailComponent implements OnInit {
     this.documentsService.deleteDocument(this.document);
     this.router.navigate(['/documents']);
   }
+
+
 }

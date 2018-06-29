@@ -1,7 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import {DndModule} from "ng2-dnd";
 
+//import {Subject} from "rxjs/Subject";
+//import { Subscription} from "rxjs/Subscription";
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header.component';
@@ -18,7 +21,7 @@ import { MessageItemComponent } from './messages/message-item/message-item.compo
 import { MessageListComponent } from './messages/message-list/message-list.component';
 import { MessageEditComponent } from './messages/message-edit/message-edit.component';
 import { DropdownDirective} from "./shared/dropdown.directive";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ContactService} from "./contacts/contact.service";
 import { MessagesService} from "./messages/messages.service";
 import { DocumentsService} from "./documents/documents.service";
@@ -26,6 +29,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import { DocumentEditComponent } from './documents/document-edit/document-edit.component';
 import {WindRefService} from "./wind-ref.service";
 import { ContactEditComponent } from './contacts/contact-edit/contact-edit.component';
+import { Subscription} from "rxjs/internal/Subscription";
 
 @NgModule({
 
@@ -53,7 +57,10 @@ import { ContactEditComponent } from './contacts/contact-edit/contact-edit.compo
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DndModule.forRoot(),
+    ReactiveFormsModule,
+    HttpModule
   ],
   providers: [ContactService, MessagesService, DocumentsService, WindRefService],
   bootstrap: [AppComponent]

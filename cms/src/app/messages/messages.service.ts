@@ -6,6 +6,7 @@ import {MOCKMESSAGES} from "./MOCKMESSAGES";
 export class MessagesService {
   @Output() messageChangeEvent = new EventEmitter<Message[]>();
   messages: Message[] = [];
+
   constructor(){
     this.messages = MOCKMESSAGES;
   }

@@ -1,17 +1,49 @@
-import { Injectable, Output, EventEmitter} from "@angular/core";
+import {Injectable, Output, EventEmitter, OnDestroy, OnInit} from "@angular/core";
 import {Contact} from './contact.model';
 import { MOCKCONTACTS} from "./MOCKCONTACTS";
-import {Document} from "../documents/document.model";
+import {Subject} from "rxjs/Subject";
+import {Subscription} from "rxjs/Subscription";
 
 @Injectable()
-export class ContactService {
+export class ContactService implements OnDestroy, OnInit {
   contacts: Contact[] = [];
+  subscription: Subscription;
   @Output() contactSelectedEvent: EventEmitter<Contact> = new EventEmitter<Contact>();
   @Output() contactChange: EventEmitter<Contact[]> = new EventEmitter<Contact[]>();
+  contactListChangedEvent: Subject<Contact[]> = new Subject<Contact[]>();
+  maxContactId: number;
   constructor() {
     this.contacts = MOCKCONTACTS;
+    this.maxContactId = this.getMaxId();
   }
+  getMaxId(): number {
+    let maxId = 0;
+    for (let contact of this.contacts){
+      let currentId = +contact.id;
+      if(currentId > maxId){
+        maxId = currentId;
+      }
+    }
+    return maxId;
+  }
+  // add Contact
+  addContact(contact: Contact){
+    if (contact) {
+      contact.id = String(++this.maxContactId);
 
+      this.contacts.push(contact);
+      this.contactListChangedEvent.next(this.getContacts());
+    }
+  }
+  //update Contact
+  updateContact(original: Contact, updated: Contact){
+    var pos;
+    if (original && updated && ( pos = this.contacts.indexOf(original)) >= 0){
+      updated.id = original.id;
+      this.contacts[pos] = updated;
+      this.contactListChangedEvent.next(this.getContacts());
+    }
+  }
   getContacts(): Contact[] {
     return this.contacts.slice();
   }
@@ -32,5 +64,11 @@ export class ContactService {
     }
     this.contacts.splice(pos, 1);
     this.contactChange.emit(this.contacts.slice());
+  }
+  ngOnInit(){
+    this.subscription = this.contactListChangedEvent.subscribe();
+  }
+  ngOnDestroy() {
+    this.contactListChangedEvent.unsubscribe();
   }
 }

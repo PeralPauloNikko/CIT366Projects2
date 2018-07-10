@@ -4,6 +4,8 @@ import { ContactService} from "../contact.service";
 import {ActivatedRoute, Router, Params} from "@angular/router";
 import {NgForm} from "@angular/forms";
 
+
+
 @Component({
   selector: 'app-contact-edit',
   templateUrl: './contact-edit.component.html',
@@ -11,8 +13,8 @@ import {NgForm} from "@angular/forms";
 })
 export class ContactEditComponent implements OnInit {
   contact: Contact = null;
-  groupContacts: Contact[] = [];
   original: Contact;
+  groupContacts: Contact[] = [];
   editMode: boolean = false;
   invalidGroupContact: boolean = false;
 
@@ -29,10 +31,14 @@ export class ContactEditComponent implements OnInit {
     });
   }
 
+
+
+
 // The onSubmit method
   onSubmit(form: NgForm){
     const contact: Contact = new Contact(String(this.contactsService.getMaxId()),
       form.value.name, form.value.email, form.value.phone, form.value.url,  this.groupContacts);
+
 
     if (this.editMode) {
       this.contactsService.updateContact(this.original, contact);
@@ -43,10 +49,15 @@ export class ContactEditComponent implements OnInit {
     this.router.navigate(['/contacts']);
   }
 
+
+
   // the onCancel method
   onCancel() {
     this.router.navigate(['/contacts']);
   }
+
+
+
 
   // invalid contact method
   isInvalidContact(newContact: Contact) {
@@ -64,6 +75,8 @@ export class ContactEditComponent implements OnInit {
     return false;
   }
 
+
+
   // add new function that adds to group
   addToGroup($event: any){
     let selectedContact: Contact = $event.dragData;
@@ -75,10 +88,16 @@ export class ContactEditComponent implements OnInit {
     this.invalidGroupContact = false;
   }
 
+
+
   onRemoveItem(idx: number){
     if(idx < 0 || idx >= this.groupContacts.length)
       return;
     this.groupContacts.splice(idx, 1);
     this.invalidGroupContact = false;
   }
+
+
+
+
 }

@@ -1,10 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import {DndModule} from "ng2-dnd";
-
-//import {Subject} from "rxjs/Subject";
-//import { Subscription} from "rxjs/Subscription";
+import { DndModule} from "ng2-dnd";
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header.component';
@@ -29,7 +26,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import { DocumentEditComponent } from './documents/document-edit/document-edit.component';
 import {WindRefService} from "./wind-ref.service";
 import { ContactEditComponent } from './contacts/contact-edit/contact-edit.component';
-import { Subscription} from "rxjs/internal/Subscription";
+
 
 @NgModule({
 
@@ -59,8 +56,7 @@ import { Subscription} from "rxjs/internal/Subscription";
     FormsModule,
     AppRoutingModule,
     DndModule.forRoot(),
-    ReactiveFormsModule,
-    HttpModule
+    ReactiveFormsModule
   ],
   providers: [ContactService, MessagesService, DocumentsService, WindRefService],
   bootstrap: [AppComponent]

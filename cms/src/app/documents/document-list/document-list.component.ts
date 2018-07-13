@@ -24,5 +24,4 @@ export class DocumentListComponent implements OnInit {
   //ngOnDestroy() {
   //this.subscription.unsubscribe();
   //}
-
 }

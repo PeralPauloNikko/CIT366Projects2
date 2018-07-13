@@ -1,13 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
 import { DndModule} from "ng2-dnd";
+import {HttpClientModule} from "@angular/common/http";
+import {HttpModule} from "@angular/http";
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { ContactListComponent } from './contacts/contact-list/contact-list.component';
-import { ContactDetailComponent } from './contacts/contacts-detail/contacts-detail.component';
+import {ContactDetailComponent} from "./contacts/contacts-detail/contacts-detail.component";
 import { ContactItemComponent } from './contacts/contact-item/contact-item.component';
 import { DocumentsComponent } from './documents/documents.component';
 import { DocumentItemComponent } from './documents/document-item/document-item.component';
@@ -26,6 +27,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import { DocumentEditComponent } from './documents/document-edit/document-edit.component';
 import {WindRefService} from "./wind-ref.service";
 import { ContactEditComponent } from './contacts/contact-edit/contact-edit.component';
+import {ContactsFilterPipe} from "./contacts/contacts-filter.pipe";
 
 
 @NgModule({
@@ -49,14 +51,17 @@ import { ContactEditComponent } from './contacts/contact-edit/contact-edit.compo
     MessageEditComponent,
     DropdownDirective,
     DocumentEditComponent,
-    ContactEditComponent
+    ContactEditComponent,
+    ContactsFilterPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     AppRoutingModule,
     DndModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule
   ],
   providers: [ContactService, MessagesService, DocumentsService, WindRefService],
   bootstrap: [AppComponent]

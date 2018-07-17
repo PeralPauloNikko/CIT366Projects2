@@ -11,7 +11,7 @@ export class ContactService implements OnDestroy, OnInit {
   subscription: Subscription;
   contacts: Contact[] = [];
 
-  jsonUrl: string = 'https://test-eb48c.firebaseio.com/contacts.json';
+  jsonUrl: string = 'https://cit366nikko.firebaseio.com/contacts.json';
 
 
   @Output() contactSelectedEvent: EventEmitter<Contact> = new EventEmitter<Contact>();

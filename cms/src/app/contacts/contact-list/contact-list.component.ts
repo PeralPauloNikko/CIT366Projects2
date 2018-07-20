@@ -13,6 +13,7 @@ export class ContactListComponent implements OnInit {
   //@Output() selectedContactEvent = new EventEmitter <Contact>();
   contacts: Contact[];
   term: string ='';
+  subscription: Subscription;
 
 // contacts: Contact[] = [
 //   new Contact("1", "Bro. Jackson", "jacksonk@byui.edu", "208-496-3771", "https://web.byui.edu/Directory/Employee/jacksonk.jpg", null),
@@ -23,9 +24,10 @@ export class ContactListComponent implements OnInit {
 
   ngOnInit() {
     this.contacts = this.contactService.getContacts();
-
-    this.contactService.contactListChangedEvent.subscribe((contacts: Contact[])=>{
+    this.subscription = this.contactService.contactListChangedEvent.subscribe((contacts: Contact[])  => {
       this.contacts = contacts;
+/*    this.contactService.contactListChangedEvent.subscribe((contacts: Contact[])=>{
+      this.contacts = contacts;*/
     });
   }
   onSelected(contact: Contact){

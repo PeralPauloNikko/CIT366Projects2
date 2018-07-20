@@ -23,22 +23,21 @@ export class ContactEditComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.params.subscribe((params: Params)  => {this.original = this.contactsService.getContact(params['id']);
+    this.route.params.subscribe((params: Params)  => {
+      this.original = this.contactsService.getContact(params['id']);
+      this.groupContacts = this.original.group;
+
       if (this.original) {
         this.editMode = true;
         this.contact = JSON.parse(JSON.stringify(this.original));
       }
     });
   }
-
-
-
-
 // The onSubmit method
   onSubmit(form: NgForm){
     const contact: Contact = new Contact(String(this.contactsService.getMaxId()),
-      form.value.name, form.value.email, form.value.phone, form.value.url,  this.groupContacts);
-
+      form.value.name, form.value.email, form.value.phone, form.value.url,  null);
+    contact.group = this.groupContacts;
 
     if (this.editMode) {
       this.contactsService.updateContact(this.original, contact);

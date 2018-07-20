@@ -3,8 +3,9 @@ import { Contact } from './contact.model';
 import { MOCKCONTACTS } from "./MOCKCONTACTS";
 import {Subject} from "rxjs/Subject";
 import {Subscription} from "rxjs/Subscription";
-import {Response, Http} from "@angular/http";
+import {Response, Http, Headers} from "@angular/http";
 import 'rxjs/Rx';
+import {Document} from "../documents/document.model";
 
 @Injectable()
 export class ContactService implements OnDestroy, OnInit {
@@ -17,7 +18,9 @@ export class ContactService implements OnDestroy, OnInit {
   @Output() contactSelectedEvent: EventEmitter<Contact> = new EventEmitter<Contact>();
   //@Output() contactChange: EventEmitter<Contact[]> = new EventEmitter<Contact[]>();
   contactListChangedEvent: Subject<Contact[]> = new Subject<Contact[]>();
+  contactChange: EventEmitter<Contact[]> = new EventEmitter<Contact[]>();
   maxContactId: number;
+
 
   constructor(private http: Http) {
     this.contacts = MOCKCONTACTS;
@@ -77,7 +80,6 @@ export class ContactService implements OnDestroy, OnInit {
 
 
   storeContact(){
-    // put request overwrites data
     this.http.put(this.jsonUrl, JSON.stringify(this.contacts))
       .subscribe(() => {
         this.contactListChangedEvent.next(this.getContacts());
@@ -85,8 +87,7 @@ export class ContactService implements OnDestroy, OnInit {
   }
 
   initContacts(){
-    // Base off of the getRecipes from the downloadable
-    // first get
+
     this.http.get(this.jsonUrl)
     // use the map function
       .map((response: Response) => {
